@@ -11,7 +11,7 @@ namespace IdentityCoreTekrar.Models.Configurations
             builder.Ignore(x => x.ID);
             builder.HasOne(x => x.Profile).WithOne(x => x.AppUser).HasForeignKey<AppUserProfile>(x => x.ID);
             builder.HasMany(x => x.UserRoles).WithOne(x=> x.User).HasForeignKey(x => x.UserId).IsRequired();
-            builder.HasMany(x => x.Orders).WithOne(x => x.AppUser).HasForeignKey(x => x.AppUserID);//Orderın 1 tane appuserı olr
+            builder.HasMany(x => x.Orders).WithOne(x => x.AppUser).HasForeignKey(x => x.AppUserID);
 
         }
     }

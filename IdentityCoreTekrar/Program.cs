@@ -15,7 +15,7 @@ builder.Services.AddIdentity<AppUser, AppRole>(x=>
     x.Password.RequireUppercase = false;
     x.Password.RequireNonAlphanumeric = false;
     x.Lockout.MaxFailedAccessAttempts = 5;
-});
+}).AddEntityFrameworkStores<MyContext>();
 
 builder.Services.ConfigureApplicationCookie(x =>
 {
@@ -44,10 +44,12 @@ app.UseStaticFiles();
 
 app.UseRouting();
 
+app.UseAuthentication();
+
 app.UseAuthorization();
 
 app.MapControllerRoute(
     name: "default",
-    pattern: "{controller=Home}/{action=Index}/{id?}");
+    pattern: "{controller=Home}/{action=Register}/{id?}");
 
 app.Run();
